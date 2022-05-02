@@ -1,0 +1,26 @@
+﻿@model CreateCityViewModel
+@{
+    ViewData["Title"] = "CreateCity";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yeni Avtomobil Modeli Yaradın</h4>
+                    <form class="forms-sample" method="post" asp-area="Admin" asp-controller="City" asp-action="CreateCity" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input asp-for="CityName" type="text" />
+                            <label asp-for="CityName" class="text-success">Şəhərin Adı</label>
+                            <span class="text-danger" asp-validation-for="CityName"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Yarat</button>
+                        <a asp-action="Index" asp-controller="City" asp-area="Admin" class="btn btn-light">Ləğv et</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

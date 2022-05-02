@@ -1,0 +1,45 @@
+﻿@model List<ContactForm>
+@{
+    Layout = null;
+    int order = 0;
+}
+
+<h1 class="text-center">Formlar</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyad</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Mesaj</th>
+            <th scope="col">Cavabla</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var form in Model)
+            {
+                order++;
+                <td>@order</td>
+                <td>@form.Name</td>
+                <td>@form.Surname</td>
+                <td>@form.Email</td>
+                <td>@form.Phone</td>
+                <td>@form.Message</td>
+                <td>
+                    <form method="post" asp-area="Admin" asp-controller="ContactForm" asp-action="FormResponse">
+                        <input hidden name="Email" value="@form.Email" />
+                        <input name="Message" placeholder="Yaz"/>
+                        <input class="btn btn-success mt-3" type='submit' value='Göndər' />
+                    </form>
+                </td>
+            }
+        </tr>
+    </tbody>
+</table>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

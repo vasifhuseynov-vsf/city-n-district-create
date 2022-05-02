@@ -1,0 +1,21 @@
+﻿@model UnBlockUserViewModel
+@{
+    ViewData["Title"] = "UnBlock";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h1>@Model.UserName</h1>
+                <h2>@Model.Email</h2>
+                <p class="text-danger">İstifadəçini blokdan çıxarmağınızdan əminsiniz mi ?</p>
+                <a class="btn btn-secondary mb-2" asp-area="Admin" asp-controller="User" asp-action="Index">Ləğv et</a>
+                <form method="post" asp-area="Admin" asp-controller="User" asp-action="UnBlock">
+                    <button class="btn btn-danger" type="submit">Blokdan çıxart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

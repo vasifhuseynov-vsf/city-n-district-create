@@ -1,0 +1,45 @@
+﻿@model List<City>
+@{
+    ViewData["Title"] = "Index";
+    int order = 0;
+}
+
+<div class="table-responsive mt-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Şəhər</th>
+                <th>Ərazilər</th>
+                <th>Əməliyyat</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var city in Model)
+            {
+                order++;
+            <tr>
+                <td>@order</td>
+                <td><mark>@city.Name</mark></td>
+                <td>
+                    @foreach (var district in city.Districts)
+                    {
+                        <i>* @district.Name </i>
+                    }
+                </td>
+                <td>
+                    <form method="post" asp-area="Admin" asp-controller="City" asp-action="CreateDistrict">
+                        <input hidden name="CityId" value="@city.Id" />
+                        <input name="DistrictName" placeholder="Ərazi" />
+                        <input class="btn btn-success mt-3" type='submit' value='Əlavə et' />
+                    </form>
+                    @*<a class="btn btn-danger" asp-area="Admin" asp-controller="City" asp-action="CreateDistrict" asp-route-id="@city.Id">Əlavə et</a>*@
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

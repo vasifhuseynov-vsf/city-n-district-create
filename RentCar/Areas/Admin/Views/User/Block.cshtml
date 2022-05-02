@@ -1,0 +1,21 @@
+﻿@model BlockUserViewModel
+@{
+    ViewData["Title"] = "Block";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h1>@Model.UserName</h1>
+                <h2>@Model.Email</h2>
+                <p class="text-danger">İstifadəçini blok edəcəyinizdən əminsiniz mi ?</p>
+                <a class="btn btn-secondary mb-2" asp-area="Admin" asp-controller="User" asp-action="Index">Ləğv et</a>
+                <form method="post" asp-area="Admin" asp-controller="User" asp-action="Block">
+                    <button class="btn btn-danger" type="submit">Blok et</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
